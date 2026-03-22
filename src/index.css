@@ -20,3 +20,13 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+@font-face {
+    font-family: 'Avshalom';
+    font-style: normal;
+    font-weight: 300 800;
+    font-stretch: 75% 100%;
+    font-display: swap;
+    src: url(./assets/HeFont.woff2) format('woff2');
+    unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
