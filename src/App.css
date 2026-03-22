@@ -42,8 +42,8 @@ body {
 }
 
 .app-header {
-  background: linear-gradient(135deg, var(--wine-bg) 0%, #2d0f22 100%);
-  border-bottom: 1px solid var(--wine-border);
+  background: var(--wine-bg);
+  /* border-bottom: 1px solid var(--wine-border); */
   padding: 1.5rem 2rem;
   text-align: center;
 }
@@ -51,7 +51,7 @@ body {
 .header-content h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--wine-gold);
+  color: var(--wine-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,7 +145,7 @@ body {
 
 .btn:hover {
   background: var(--wine-card-hover);
-  border-color: var(--wine-gold-dim);
+  border-color: var(--wine-border);
 }
 
 .btn.active {
@@ -369,7 +369,8 @@ body {
   padding: 3rem;
   color: var(--wine-text-dim);
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .fc-empty p {

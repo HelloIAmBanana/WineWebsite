@@ -75,7 +75,7 @@ export default function FlashCards() {
 
   const unknowAll = () => {
     setKnownCards(new Set());
-    localStorage.removeItem("knownCards");
+    localStorage.setItem("knownCards", JSON.stringify([]));
   }
 
   const shuffle = () => {
@@ -136,7 +136,7 @@ export default function FlashCards() {
           <div className="fc-face fc-front">
             <h2 className="fc-wine-name">{wine.name}</h2>
             <p className="fc-wine-name-en">{wine.nameEn}</p>
-            <p className="fc-hint">לחץ/י כדי לגלות את הפרטים</p>
+            {/* <p className="fc-hint">לחץ/י כדי לגלות את הפרטים</p> */}
           </div>
 
           {/* Back - Details */}
@@ -172,7 +172,7 @@ export default function FlashCards() {
                 <span className="fc-label">ארומות:</span>
                 <span>{wine.aromas.join(", ")}</span>
               </div>
-              {wine.specialNote && (
+              {wine.specialNote.length > 0 && (
                 <div className="fc-detail-row fc-special">
                   <span className="fc-label">מיוחד:</span>
                   <span>{wine.specialNote}</span>
