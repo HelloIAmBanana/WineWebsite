@@ -26,13 +26,21 @@ export default function WineTable() {
     return true;
   });
 
+  const expandAll = () => {
+    if (expandedId === -1) {
+      setExpandedId(null);
+    } else {
+      setExpandedId(-1);
+    }
+  }
+
   return (
     <div className="wine-table">
       <div className="wt-controls">
         <input
           className="wt-search"
           type="text"
-          placeholder="חפש יין..."
+          placeholder="חיפוש..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -53,11 +61,11 @@ export default function WineTable() {
             </button>
           ))}
           <button
-              className={`btn btn-filter`}
-              onClick={() => setExpandedId(-1)}
-            >
-              ⛶
-            </button>
+            className={`btn btn-filter`}
+            onClick={expandAll}
+          >
+            ⛶
+          </button>
         </div>
       </div>
 

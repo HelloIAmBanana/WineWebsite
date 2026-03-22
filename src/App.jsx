@@ -1,14 +1,10 @@
 import { useState } from "react";
 import FlashCards from "./components/FlashCards";
-import Quiz from "./components/Quiz";
 import WineTable from "./components/WineTable";
-import MatchGame from "./components/MatchGame";
 import "./App.css";
 
 const tabs = [
   { id: "flashcards", label: "כרטיסיות", icon: "🃏" },
-  // { id: "quiz", label: "מבחן", icon: "📝" },
-  // { id: "match", label: "התאמה", icon: "🔗" },
   { id: "table", label: "סקירה", icon: "📋" },
 ];
 
@@ -22,7 +18,6 @@ export default function App() {
           <h1>
             <span className="header-icon">🍷</span>
             מבחן יין לנונו
-            {/* <span className="header-subtitle">לימוד יינות למבחן</span> */}
           </h1>
         </div>
       </header>
@@ -42,8 +37,6 @@ export default function App() {
 
       <main className="app-main">
         {activeTab === "flashcards" && <FlashCards />}
-        {/* {activeTab === "quiz" && <Quiz />}
-        {activeTab === "match" && <MatchGame />} */}
         {activeTab === "table" && <WineTable />}
       </main>
 

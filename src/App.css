@@ -253,6 +253,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  border-color: gray;
 }
 
 .fc-back {
@@ -350,6 +351,11 @@ body {
 
 .btn-know.known {
   background: var(--wine-success);
+  color: #fff;
+}
+
+.btn-know.unknown {
+  background: var(--wine-error);
   color: #fff;
 }
 

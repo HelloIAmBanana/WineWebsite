@@ -1,12 +1,16 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import wines from "../data/wines";
 
 const typeColors = {
-  red: { bg: "rgba(139, 30, 63, 0.15)", border: "#8b1e3f", accent: "#c2185b" },
+  red: {
+    bg: "rgba(139, 30, 63, 0.15)",
+    border: "#8b1e3f",
+    accent: "#c2185b"
+  },
   white: {
-    bg: "rgba(226, 214, 174, 0.12)",
-    border: "#ffffff",
-    accent: "#f1e9c6",
+    bg: "rgba(212, 175, 55, 0.12)",
+    border: "#d4af37",
+    accent: "#c8a82e",
   },
   sparkling: {
     bg: "rgba(212, 175, 55, 0.12)",
@@ -31,14 +35,14 @@ export default function FlashCards() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [filter, setFilter] = useState("all");
-  const [knownCards, setKnownCards] = useState(new Set());
+  const [knownCards, setKnownCards] = useState(localStorage.getItem("knownCards") ? new Set(JSON.parse(localStorage.getItem("knownCards"))) : new Set());
   const [showKnown, setShowKnown] = useState(true);
 
-  const filteredWines = wines.filter((w) => {
+  const filteredWines = useMemo(() => wines.filter((w) => {
     if (filter !== "all" && w.type !== filter) return false;
     if (!showKnown && knownCards.has(w.id)) return false;
     return true;
-  });
+  }), [filter, knownCards, showKnown]);
 
   const wine = filteredWines[currentIndex] || filteredWines[0];
   const colors = wine ? typeColors[wine.type] : typeColors.red;
@@ -64,12 +68,19 @@ export default function FlashCards() {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
+      localStorage.setItem("knownCards", JSON.stringify(Array.from(next)));
       return next;
     });
   };
 
+  const unknowAll = () => {
+    setKnownCards(new Set());
+    localStorage.removeItem("knownCards");
+  }
+
   const shuffle = () => {
     setIsFlipped(false);
+    // eslint-disable-next-line react-hooks/purity
     const newIndex = Math.floor(Math.random() * filteredWines.length);
     if (newIndex === currentIndex) {
       return shuffle();
@@ -80,24 +91,20 @@ export default function FlashCards() {
   if (filteredWines.length === 0) {
     return (
       <div className="flashcards">
-        <div className="fc-filters">
-          <FilterButtons filter={filter} setFilter={setFilter} />
-          <label className="fc-toggle">
-            <input
-              type="checkbox"
-              checked={showKnown}
-              onChange={(e) => {
-                setShowKnown(e.target.checked);
-                setCurrentIndex(0);
-              }}
-            />
-            הצג כרטיסים שאני יודע/ת
-          </label>
-        </div>
+        <Filters
+          filter={filter}
+          setFilter={setFilter}
+          setCurrentIndex={setCurrentIndex}
+          setShowKnown={setShowKnown}
+          showKnown={showKnown}
+        />
         <div className="fc-empty">
-          <p>כל הכבוד! סימנת את כל הכרטיסים כ"ידוע" 🎉</p>
+          <p>כל הכבוד! כל הכרטיסים ידועים" 🎉</p>
           <button className="btn" onClick={() => setShowKnown(true)}>
             הצג הכל
+          </button>
+          <button className="btn" onClick={unknowAll}>
+            סמן הכל כלא ידוע
           </button>
         </div>
       </div>
@@ -106,20 +113,13 @@ export default function FlashCards() {
 
   return (
     <div className="flashcards">
-      <div className="fc-filters">
-        <FilterButtons filter={filter} setFilter={setFilter} />
-        <label className="fc-toggle">
-          <input
-            type="checkbox"
-            checked={showKnown}
-            onChange={(e) => {
-              setShowKnown(e.target.checked);
-              setCurrentIndex(0);
-            }}
-          />
-          הצג כרטיסים שאני יודע/ת
-        </label>
-      </div>
+      <Filters
+        filter={filter}
+        setFilter={setFilter}
+        setCurrentIndex={setCurrentIndex}
+        setShowKnown={setShowKnown}
+        showKnown={showKnown}
+      />
 
       <div className="fc-progress">
         <span>
@@ -133,12 +133,7 @@ export default function FlashCards() {
       <div className="fc-card-wrapper" onClick={() => setIsFlipped(!isFlipped)}>
         <div className={`fc-card ${isFlipped ? "flipped" : ""}`}>
           {/* Front - Wine name */}
-          <div
-            className="fc-face fc-front"
-            style={{
-              borderColor: "gray",
-            }}
-          >
+          <div className="fc-face fc-front">
             <h2 className="fc-wine-name">{wine.name}</h2>
             <p className="fc-wine-name-en">{wine.nameEn}</p>
             <p className="fc-hint">לחץ/י כדי לגלות את הפרטים</p>
@@ -197,16 +192,16 @@ export default function FlashCards() {
           → הקודם
         </button>
         <button
-          className={`btn btn-know ${knownCards.has(wine.id) ? "known" : ""}`}
+          className={`btn btn-know ${knownCards.has(wine.id) ? "known" : "unknown"}`}
           onClick={(e) => {
             e.stopPropagation();
             toggleKnown(wine.id);
           }}
         >
-          {knownCards.has(wine.id) ? "✓ ידוע" : "סמן כידוע"}
+          {knownCards.has(wine.id) ? "✓ ידוע" : "✗ לא ידוע"}
         </button>
         <button className="btn btn-shuffle" onClick={shuffle}>
-          🔀 ערבב
+          רנדומלי
         </button>
         <button className="btn btn-nav" onClick={goNext}>
           הבא ←
@@ -216,7 +211,7 @@ export default function FlashCards() {
   );
 }
 
-function FilterButtons({ filter, setFilter }) {
+function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }) {
   const filters = [
     { key: "all", label: "הכל" },
     { key: "red", label: "אדום" },
@@ -225,16 +220,29 @@ function FilterButtons({ filter, setFilter }) {
     { key: "rose", label: "רוזה" },
   ];
   return (
-    <div className="fc-filter-btns">
-      {filters.map((f) => (
-        <button
-          key={f.key}
-          className={`btn btn-filter ${filter === f.key ? "active" : ""}`}
-          onClick={() => setFilter(f.key)}
-        >
-          {f.label}
-        </button>
-      ))}
+    <div className="fc-filters">
+      <div className="fc-filter-btns">
+        {filters.map((f) => (
+          <button
+            key={f.key}
+            className={`btn btn-filter ${filter === f.key ? "active" : ""}`}
+            onClick={() => setFilter(f.key)}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+      <label className="fc-toggle">
+        <input
+          type="checkbox"
+          checked={showKnown}
+          onChange={(e) => {
+            setShowKnown(e.target.checked);
+            setCurrentIndex(0);
+          }}
+        />
+        הצג כרטיסים ידועים
+      </label>
     </div>
   );
 }
