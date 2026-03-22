@@ -366,7 +366,6 @@ body::-webkit-scrollbar-thumb:hover {
 .fc-sales-pitch p {
   margin-top: 0.3rem;
   line-height: 1.6;
-  font-size: 0.9rem;
   color: var(--wine-text-dim);
 }
 

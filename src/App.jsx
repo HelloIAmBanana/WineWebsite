@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { FlashCards, SummaryTable } from "./components";
+import { FlashCards, GarageInfo, SummaryTable } from "./components";
 import "./App.css";
 
 const tabs = [
   { id: "flashcards", label: "כרטיסיות", icon: "🃏" },
   { id: "table", label: "סיכום", icon: "📋" },
+  { id: "garage", label: "גראז' דה פאפא", icon: "🍷" },
 ];
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
       <main className="app-main">
         {activeTab === "flashcards" && <FlashCards />}
         {activeTab === "table" && <SummaryTable />}
+        {activeTab === "garage" && <GarageInfo />}
       </main>
 
       <footer className="app-footer">
