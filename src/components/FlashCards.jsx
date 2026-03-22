@@ -70,7 +70,11 @@ export default function FlashCards() {
 
   const shuffle = () => {
     setIsFlipped(false);
-    setCurrentIndex(Math.floor(Math.random() * filteredWines.length));
+    const newIndex = Math.floor(Math.random() * filteredWines.length);
+    if (newIndex === currentIndex) {
+      return shuffle();
+    };
+    setCurrentIndex(newIndex);
   };
 
   if (filteredWines.length === 0) {
@@ -132,15 +136,9 @@ export default function FlashCards() {
           <div
             className="fc-face fc-front"
             style={{
-              // background: colors.bg,
-              // borderColor: colors.border,
               borderColor: "gray",
             }}
           >
-            {/* <div className="fc-type-badge" style={{ background: colors.accent }}>
-              {typeLabels[wine.type]}
-            </div> */}
-            {/* <div className="fc-emoji">{wine.emoji}</div> */}
             <h2 className="fc-wine-name">{wine.name}</h2>
             <p className="fc-wine-name-en">{wine.nameEn}</p>
             <p className="fc-hint">לחץ/י כדי לגלות את הפרטים</p>
