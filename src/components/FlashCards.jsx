@@ -36,7 +36,7 @@ export default function FlashCards() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [filter, setFilter] = useState("all");
   const [knownCards, setKnownCards] = useState(localStorage.getItem("knownCards") ? new Set(JSON.parse(localStorage.getItem("knownCards"))) : new Set());
-  const [showKnown, setShowKnown] = useState(localStorage.getItem("showKnown") === "true");
+  const [showKnown, setShowKnown] = useState(true);
 
   const filteredWines = useMemo(() => wines.filter((w) => {
     if (filter !== "all" && w.type !== filter) return false;
@@ -238,7 +238,6 @@ function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }
           checked={showKnown}
           onChange={(e) => {
             setShowKnown(e.target.checked);
-            localStorage.setItem("showKnown", `${e.target.checked}`);
             setCurrentIndex(0);
           }}
         />
