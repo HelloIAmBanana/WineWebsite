@@ -132,7 +132,7 @@ export default function FlashCards() {
           <div
             className="fc-face fc-front"
             style={{
-              background: colors.bg,
+              // background: colors.bg,
               // borderColor: colors.border,
               borderColor: "gray",
             }}
