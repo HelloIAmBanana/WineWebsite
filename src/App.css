@@ -229,6 +229,7 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
   gap: 0.4rem;
   cursor: pointer;
+  flex-direction: column;
 }
 
 .fc-toggle input {
@@ -784,7 +785,7 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 0.5rem;
 }
 
-/* ========== WINE TABLE ========== */
+/* ========== SUMMARY TABLE ========== */
 .summary-table {
   display: flex;
   flex-direction: column;

@@ -43,12 +43,14 @@ export default function FlashCards() {
   const [filter, setFilter] = useState("all");
   const [knownCards, setKnownCards] = useState(localStorage.getItem("knownCards") ? new Set(JSON.parse(localStorage.getItem("knownCards"))) : new Set());
   const [showKnown, setShowKnown] = useState(true);
+  const [wineOnly, setWineOnly] = useState(false);
 
   const filteredItems = useMemo(() => items.filter((item) => {
+    if (wineOnly && item.type == "term") return false;
     if (filter !== "all" && item.type !== filter) return false;
     if (!showKnown && knownCards.has(item.id)) return false;
     return true;
-  }), [filter, knownCards, showKnown]);
+  }), [filter, knownCards, showKnown, wineOnly]);
 
   const item = filteredItems[currentIndex] || filteredItems[0];
   const colors = item ? typeColors[item.type] : typeColors.red;
@@ -103,6 +105,8 @@ export default function FlashCards() {
           setCurrentIndex={setCurrentIndex}
           setShowKnown={setShowKnown}
           showKnown={showKnown}
+          wineOnly={wineOnly}
+          setWineOnly={setWineOnly}
         />
         <div className="fc-empty">
           <p>כל הכבוד! כל הכרטיסים ידועים 🎉</p>
@@ -125,6 +129,8 @@ export default function FlashCards() {
         setCurrentIndex={setCurrentIndex}
         setShowKnown={setShowKnown}
         showKnown={showKnown}
+        wineOnly={wineOnly}
+        setWineOnly={setWineOnly}
       />
 
       <div className="fc-progress">
@@ -226,7 +232,15 @@ export default function FlashCards() {
   );
 }
 
-function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }) {
+function Filters({
+  filter,
+  setFilter,
+  showKnown,
+  setShowKnown,
+  setCurrentIndex,
+  wineOnly,
+  setWineOnly
+}) {
   const filters = [
     { key: "all", label: "הכל" },
     { key: "red", label: "אדום" },
@@ -249,6 +263,7 @@ function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }
         ))}
       </div>
       <label className="fc-toggle">
+        הצג כרטיסים ידועים
         <input
           type="checkbox"
           checked={showKnown}
@@ -257,7 +272,17 @@ function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }
             setCurrentIndex(0);
           }}
         />
-        הצג כרטיסים ידועים
+      </label>
+      <label className="fc-toggle">
+        הצג רק יינות
+        <input
+          type="checkbox"
+          checked={wineOnly}
+          onChange={(e) => {
+            setWineOnly(e.target.checked);
+            setCurrentIndex(0);
+          }}
+        />
       </label>
     </div>
   );

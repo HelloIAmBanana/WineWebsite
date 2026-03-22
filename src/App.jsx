@@ -1,6 +1,5 @@
 import { useState } from "react";
-import FlashCards from "./components/FlashCards";
-import SummaryTable from "./components/WineTable";
+import { FlashCards, SummaryTable } from "./components";
 import "./App.css";
 
 const tabs = [
