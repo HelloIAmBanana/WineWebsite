@@ -22,6 +22,11 @@ const typeColors = {
     border: "#db7093",
     accent: "#e91e90",
   },
+  term: {
+    bg: "rgba(33, 150, 243, 0.12)",
+    border: "#2196f3",
+    accent: "#1976d2",
+  },
 };
 
 const typeLabels = {
@@ -29,6 +34,7 @@ const typeLabels = {
   white: "לבן",
   sparkling: "מבעבע",
   rose: "רוזה",
+  term: "מושג"
 };
 
 export default function FlashCards() {
@@ -136,7 +142,6 @@ export default function FlashCards() {
           <div className="fc-face fc-front">
             <h2 className="fc-wine-name">{wine.name}</h2>
             <p className="fc-wine-name-en">{wine.nameEn}</p>
-            {/* <p className="fc-hint">לחץ/י כדי לגלות את הפרטים</p> */}
           </div>
 
           {/* Back - Details */}
@@ -151,38 +156,49 @@ export default function FlashCards() {
               {typeLabels[wine.type]}
             </div>
             <h3>{wine.name}</h3>
-            <div className="fc-details">
-              <div className="fc-detail-row">
-                <span className="fc-label">מוצא:</span>
-                <span>{wine.origin}</span>
-              </div>
-              <div className="fc-detail-row">
-                <span className="fc-label">סגנון:</span>
-                <span>{wine.style}</span>
-              </div>
-              <div className="fc-detail-row">
-                <span className="fc-label">זנים:</span>
-                <span>{wine.grapes}</span>
-              </div>
-              <div className="fc-detail-row">
-                <span className="fc-label">גוף:</span>
-                <span>{wine.body}</span>
-              </div>
-              <div className="fc-detail-row">
-                <span className="fc-label">ארומות:</span>
-                <span>{wine.aromas.join(", ")}</span>
-              </div>
-              {wine.specialNote.length > 0 && (
-                <div className="fc-detail-row fc-special">
-                  <span className="fc-label">מיוחד:</span>
-                  <span>{wine.specialNote}</span>
+            {wine.type === "term"
+              ? (
+                <div className="fc-details">
+                  <div className="fc-sales-pitch">
+                    {/* <span className="fc-label">משפט מכירה:</span> */}
+                    <p>{wine.description}</p>
+                  </div>
+                </div>
+              )
+              : (
+                <div className="fc-details">
+                  <div className="fc-detail-row">
+                    <span className="fc-label">מוצא:</span>
+                    <span>{wine.origin}</span>
+                  </div>
+                  <div className="fc-detail-row">
+                    <span className="fc-label">סגנון:</span>
+                    <span>{wine.style}</span>
+                  </div>
+                  <div className="fc-detail-row">
+                    <span className="fc-label">זנים:</span>
+                    <span>{wine.grapes}</span>
+                  </div>
+                  <div className="fc-detail-row">
+                    <span className="fc-label">גוף:</span>
+                    <span>{wine.body}</span>
+                  </div>
+                  <div className="fc-detail-row">
+                    <span className="fc-label">ארומות:</span>
+                    <span>{wine.aromas.join(", ")}</span>
+                  </div>
+                  {wine.specialNote.length > 0 && (
+                    <div className="fc-detail-row fc-special">
+                      <span className="fc-label">מיוחד:</span>
+                      <span>{wine.specialNote}</span>
+                    </div>
+                  )}
+                  <div className="fc-sales-pitch">
+                    <span className="fc-label">משפט מכירה:</span>
+                    <p>{wine.salesPitch}</p>
+                  </div>
                 </div>
               )}
-              <div className="fc-sales-pitch">
-                <span className="fc-label">משפט מכירה:</span>
-                <p>{wine.salesPitch}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -207,7 +223,7 @@ export default function FlashCards() {
           הבא ←
         </button>
       </div>
-    </div>
+    </div >
   );
 }
 
@@ -218,6 +234,7 @@ function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }
     { key: "white", label: "לבן" },
     { key: "sparkling", label: "מבעבע" },
     { key: "rose", label: "רוזה" },
+    { key: "term", label: "מושג" },
   ];
   return (
     <div className="fc-filters">

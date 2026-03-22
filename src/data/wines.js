@@ -12,6 +12,7 @@ const wines = [
     aromas: ["פירות יער", "שזיפים", "תבלינים"],
     body: "קל",
     specialNote: "",
+    isWine: true
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const wines = [
     aromas: ["פלפל שחור", "זעפרן", "ים תיכוני"],
     body: "מלא",
     specialNote: "",
+    isWine: true
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ const wines = [
     aromas: ["פירות יער"],
     body: "קליל",
     specialNote: "",
+    isWine: true
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ const wines = [
     aromas: ["פירות אדומים"],
     body: "קליל",
     specialNote: "",
+    isWine: true
   },
   {
     id: 5,
@@ -68,6 +72,7 @@ const wines = [
     aromas: ["פירות"],
     body: "מלא",
     specialNote: "",
+    isWine: true
   },
   {
     id: 6,
@@ -82,6 +87,7 @@ const wines = [
     aromas: ["אוכמניות", "פירות יער"],
     body: "בינוני-מלא",
     specialNote: "",
+    isWine: true
   },
   {
     id: 7,
@@ -96,6 +102,7 @@ const wines = [
     aromas: ["תפוח", "אגס", "פירות ירוקים"],
     body: "קליל",
     specialNote: "",
+    isWine: true
   },
   {
     id: 8,
@@ -110,6 +117,7 @@ const wines = [
     aromas: ["חמאה", "שמרים", "וניל"],
     body: "מלא",
     specialNote: "עובר יישון בחבית 3 חודשים",
+    isWine: true
   },
   {
     id: 9,
@@ -124,6 +132,7 @@ const wines = [
     aromas: ["מתיקות עדינה", "פירותי", "רעננות"],
     body: "קליל-בינוני",
     specialNote: "",
+    isWine: true
   },
   {
     id: 10,
@@ -138,6 +147,7 @@ const wines = [
     aromas: ["תפוח", "אגס", "פירות ירוקים"],
     body: "קליל",
     specialNote: "",
+    isWine: true
   },
   {
     id: 11,
@@ -152,6 +162,7 @@ const wines = [
     aromas: ["ארומות ירוקות", "שמרים"],
     body: "בינוני",
     specialNote: "",
+    isWine: true
   },
   {
     id: 12,
@@ -166,6 +177,7 @@ const wines = [
     aromas: ["תפוח", "אגס"],
     body: "קליל",
     specialNote: "",
+    isWine: true
   },
   {
     id: 13,
@@ -180,7 +192,16 @@ const wines = [
     aromas: ["תות-שדה", "פרחים"],
     body: "בינוני",
     specialNote: "עובר התיישנות בחביות עץ",
+    isWine: true
   },
+  {
+    id: 14,
+    name: "גוף",
+    nameEn: "Body",
+    type: "term",
+    description: "הגוף מתאר את התחושה בחלל הפה בעת הלגימה. זו מורכבת מתחושת סמיכותו של היין ושיעור האלכוהול. גוף יכול להיות קל בינוני ומלא",
+    isWine: false
+  }
 ];
 
 export default wines;
