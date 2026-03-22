@@ -133,13 +133,14 @@ export default function FlashCards() {
             className="fc-face fc-front"
             style={{
               background: colors.bg,
-              borderColor: colors.border,
+              // borderColor: colors.border,
+              borderColor: "gray",
             }}
           >
-            <div className="fc-type-badge" style={{ background: colors.accent }}>
+            {/* <div className="fc-type-badge" style={{ background: colors.accent }}>
               {typeLabels[wine.type]}
-            </div>
-            <div className="fc-emoji">{wine.emoji}</div>
+            </div> */}
+            {/* <div className="fc-emoji">{wine.emoji}</div> */}
             <h2 className="fc-wine-name">{wine.name}</h2>
             <p className="fc-wine-name-en">{wine.nameEn}</p>
             <p className="fc-hint">לחץ/י כדי לגלות את הפרטים</p>
