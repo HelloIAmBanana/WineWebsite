@@ -309,13 +309,13 @@ body::-webkit-scrollbar-thumb:hover {
   margin-bottom: 1rem;
 }
 
-.fc-wine-name {
+.fc-item-name {
   font-size: 1.8rem;
   color: var(--wine-gold);
   margin-bottom: 0.5rem;
 }
 
-.fc-wine-name-en {
+.fc-item-name-en {
   color: var(--wine-text-dim);
   font-size: 1rem;
 }
@@ -785,20 +785,20 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== WINE TABLE ========== */
-.wine-table {
+.summary-table {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.wt-controls {
+.st-controls {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.wt-search {
+.st-search {
   background: var(--wine-card);
   border: 1px solid var(--wine-border);
   border-radius: var(--radius-sm);
@@ -811,28 +811,28 @@ body::-webkit-scrollbar-thumb:hover {
   direction: rtl;
 }
 
-.wt-search::placeholder {
+.st-search::placeholder {
   color: var(--wine-text-dim);
 }
 
-.wt-search:focus {
+.st-search:focus {
   outline: none;
   border-color: var(--wine-gold-dim);
 }
 
-.wt-filters {
+.st-filters {
   display: flex;
   gap: 0.4rem;
   flex-wrap: wrap;
 }
 
-.wt-grid {
+.st-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1rem;
 }
 
-.wt-card {
+.st-card {
   background: var(--wine-card);
   border: 1px solid var(--wine-border);
   border-radius: var(--radius);
@@ -841,68 +841,68 @@ body::-webkit-scrollbar-thumb:hover {
   transition: var(--transition);
 }
 
-.wt-card:hover {
+.st-card:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow);
 }
 
-.wt-card-red {
+.st-card-red {
   border-right: 4px solid var(--wine-red);
 }
 
-.wt-card-white {
+.st-card-white {
   border-right: 4px solid var(--wine-gold);
 }
 
-.wt-card-sparkling {
+.st-card-sparkling {
   border-right: 4px solid var(--wine-gold);
 }
 
-.wt-card-rose {
+.st-card-rose {
   border-right: 4px solid var(--wine-rose);
 }
 
-.wt-card-term {
+.st-card-term {
   border-right: 4px solid var(--wine-term);
 }
 
-.wt-card-header {
+.st-card-header {
   padding: 1rem 1.2rem 0.5rem;
 }
 
-.wt-type {
+.st-type {
   font-size: 0.8rem;
   color: var(--wine-text-dim);
 }
 
-.wt-card-header h3 {
+.st-card-header h3 {
   font-size: 1.2rem;
   color: var(--wine-gold);
   margin: 0.3rem 0;
 }
 
-.wt-name-en {
+.st-name-en {
   font-size: 0.85rem;
   color: var(--wine-text-dim);
 }
 
-.wt-card-body {
+.st-card-body {
   padding: 0.5rem 1.2rem 1rem;
 }
 
-.wt-info-grid {
+.st-info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem;
 }
 
-.wt-info {
+.st-info {
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
 }
 
-.wt-label {
+.st-label {
   font-size: 0.75rem;
   color: var(--wine-gold-dim);
   font-weight: 600;
@@ -910,7 +910,7 @@ body::-webkit-scrollbar-thumb:hover {
   letter-spacing: 0.5px;
 }
 
-.wt-expanded {
+.st-expanded {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--wine-border);
@@ -931,20 +931,20 @@ body::-webkit-scrollbar-thumb:hover {
   }
 }
 
-.wt-aromas {
+.st-aromas {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
 }
 
-.wt-aroma-tags {
+.st-aroma-tags {
   display: flex;
   gap: 0.3rem;
   flex-wrap: wrap;
 }
 
-.wt-aroma-tag {
+.st-aroma-tag {
   background: rgba(212, 175, 55, 0.1);
   border: 1px solid var(--wine-gold-dim);
   border-radius: 20px;
@@ -953,24 +953,24 @@ body::-webkit-scrollbar-thumb:hover {
   color: var(--wine-gold);
 }
 
-.wt-special {
+.st-special {
   display: flex;
   gap: 0.5rem;
   color: var(--wine-rose);
 }
 
-.wt-pitch {
+.st-pitch {
   margin-top: 0.25rem;
 }
 
-.wt-pitch p {
+.st-pitch p {
   margin-top: 0.3rem;
   font-size: 0.9rem;
   line-height: 1.6;
   color: var(--wine-text-dim);
 }
 
-.wt-card.expanded {
+.st-card.expanded {
   box-shadow: 0 4px 20px rgba(139, 30, 63, 0.2);
 }
 
@@ -1016,7 +1016,7 @@ body::-webkit-scrollbar-thumb:hover {
     min-height: 300px;
   }
 
-  .fc-wine-name {
+  .fc-item-name {
     font-size: 1.4rem;
   }
 
@@ -1029,7 +1029,7 @@ body::-webkit-scrollbar-thumb:hover {
     font-size: 0.85rem;
   }
 
-  .wt-grid {
+  .st-grid {
     grid-template-columns: 1fr;
   }
 

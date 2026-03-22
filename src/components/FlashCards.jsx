@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
-import wines from "../data/wines";
+import items from "../data/items";
 
 const typeColors = {
   red: {
@@ -44,30 +44,30 @@ export default function FlashCards() {
   const [knownCards, setKnownCards] = useState(localStorage.getItem("knownCards") ? new Set(JSON.parse(localStorage.getItem("knownCards"))) : new Set());
   const [showKnown, setShowKnown] = useState(true);
 
-  const filteredWines = useMemo(() => wines.filter((w) => {
-    if (filter !== "all" && w.type !== filter) return false;
-    if (!showKnown && knownCards.has(w.id)) return false;
+  const filteredItems = useMemo(() => items.filter((item) => {
+    if (filter !== "all" && item.type !== filter) return false;
+    if (!showKnown && knownCards.has(item.id)) return false;
     return true;
   }), [filter, knownCards, showKnown]);
 
-  const wine = filteredWines[currentIndex] || filteredWines[0];
-  const colors = wine ? typeColors[wine.type] : typeColors.red;
+  const item = filteredItems[currentIndex] || filteredItems[0];
+  const colors = item ? typeColors[item.type] : typeColors.red;
 
   const goNext = useCallback(() => {
     setIsFlipped(false);
     setTimeout(() => {
-      setCurrentIndex((i) => (i + 1) % filteredWines.length);
+      setCurrentIndex((i) => (i + 1) % filteredItems.length);
     }, 150);
-  }, [filteredWines.length]);
+  }, [filteredItems.length]);
 
   const goPrev = useCallback(() => {
     setIsFlipped(false);
     setTimeout(() => {
       setCurrentIndex((i) =>
-        i === 0 ? filteredWines.length - 1 : i - 1
+        i === 0 ? filteredItems.length - 1 : i - 1
       );
     }, 150);
-  }, [filteredWines.length]);
+  }, [filteredItems.length]);
 
   const toggleKnown = (id) => {
     setKnownCards((prev) => {
@@ -87,14 +87,14 @@ export default function FlashCards() {
   const shuffle = () => {
     setIsFlipped(false);
     // eslint-disable-next-line react-hooks/purity
-    const newIndex = Math.floor(Math.random() * filteredWines.length);
+    const newIndex = Math.floor(Math.random() * filteredItems.length);
     if (newIndex === currentIndex) {
       return shuffle();
     };
     setCurrentIndex(newIndex);
   };
 
-  if (filteredWines.length === 0) {
+  if (filteredItems.length === 0) {
     return (
       <div className="flashcards">
         <Filters
@@ -129,10 +129,10 @@ export default function FlashCards() {
 
       <div className="fc-progress">
         <span>
-          {currentIndex + 1} / {filteredWines.length}
+          {currentIndex + 1} / {filteredItems.length}
         </span>
         <span className="fc-known-count">
-          ידוע: {knownCards.size} / {wines.length}
+          ידוע: {knownCards.size} / {items.length}
         </span>
       </div>
 
@@ -140,8 +140,8 @@ export default function FlashCards() {
         <div className={`fc-card ${isFlipped ? "flipped" : ""}`}>
           {/* Front - Wine name */}
           <div className="fc-face fc-front">
-            <h2 className="fc-wine-name">{wine.name}</h2>
-            <p className="fc-wine-name-en">{wine.nameEn}</p>
+            <h2 className="fc-item-name">{item.name}</h2>
+            <p className="fc-item-name-en">{item.nameEn}</p>
           </div>
 
           {/* Back - Details */}
@@ -153,14 +153,14 @@ export default function FlashCards() {
             }}
           >
             <div className="fc-type-badge" style={{ background: colors.accent }}>
-              {typeLabels[wine.type]}
+              {typeLabels[item.type]}
             </div>
-            <h3>{wine.name}</h3>
-            {wine.type === "term"
+            <h3>{item.name}</h3>
+            {item.type === "term"
               ? (
                 <div className="fc-details">
                   <div className="fc-sales-pitch">
-                    <p>{wine.description}</p>
+                    <p>{item.description}</p>
                   </div>
                 </div>
               )
@@ -168,33 +168,33 @@ export default function FlashCards() {
                 <div className="fc-details">
                   <div className="fc-detail-row">
                     <span className="fc-label">מוצא:</span>
-                    <span>{wine.origin}</span>
+                    <span>{item.origin}</span>
                   </div>
                   <div className="fc-detail-row">
                     <span className="fc-label">סגנון:</span>
-                    <span>{wine.style}</span>
+                    <span>{item.style}</span>
                   </div>
                   <div className="fc-detail-row">
                     <span className="fc-label">זנים:</span>
-                    <span>{wine.grapes}</span>
+                    <span>{item.grapes}</span>
                   </div>
                   <div className="fc-detail-row">
                     <span className="fc-label">גוף:</span>
-                    <span>{wine.body}</span>
+                    <span>{item.body}</span>
                   </div>
                   <div className="fc-detail-row">
                     <span className="fc-label">ארומות:</span>
-                    <span>{wine.aromas.join(", ")}</span>
+                    <span>{item.aromas.join(", ")}</span>
                   </div>
-                  {wine.specialNote.length > 0 && (
+                  {item.specialNote.length > 0 && (
                     <div className="fc-detail-row fc-special">
                       <span className="fc-label">מיוחד:</span>
-                      <span>{wine.specialNote}</span>
+                      <span>{item.specialNote}</span>
                     </div>
                   )}
                   <div className="fc-sales-pitch">
                     <span className="fc-label">משפט מכירה:</span>
-                    <p>{wine.salesPitch}</p>
+                    <p>{item.salesPitch}</p>
                   </div>
                 </div>
               )}
@@ -207,13 +207,13 @@ export default function FlashCards() {
           → הקודם
         </button>
         <button
-          className={`btn btn-know ${knownCards.has(wine.id) ? "known" : "unknown"}`}
+          className={`btn btn-know ${knownCards.has(item.id) ? "known" : "unknown"}`}
           onClick={(e) => {
             e.stopPropagation();
-            toggleKnown(wine.id);
+            toggleKnown(item.id);
           }}
         >
-          {knownCards.has(wine.id) ? "✓ ידוע" : "✗ לא ידוע"}
+          {knownCards.has(item.id) ? "✓ ידוע" : "✗ לא ידוע"}
         </button>
         <button className="btn btn-shuffle" onClick={shuffle}>
           רנדומלי 🎲

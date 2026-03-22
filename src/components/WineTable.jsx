@@ -1,5 +1,5 @@
 import { useState } from "react";
-import wines from "../data/wines";
+import items from "../data/items";
 
 const typeLabels = {
   red: "🍷 אדום",
@@ -9,19 +9,19 @@ const typeLabels = {
   term: "🧠 מושג"
 };
 
-export default function WineTable() {
+export default function SummaryTable() {
   const [expandedId, setExpandedId] = useState(null);
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filtered = wines.filter((w) => {
-    if (filter !== "all" && w.type !== filter) return false;
+  const filteredItems = items.filter((item) => {
+    if (filter !== "all" && item.type !== filter) return false;
     if (
       searchTerm &&
-      !w.name.includes(searchTerm) &&
-      !w.nameEn.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      !w.origin.includes(searchTerm) &&
-      !w.grapes.includes(searchTerm)
+      !item.name.includes(searchTerm) &&
+      !item.nameEn?.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      !item.origin?.includes(searchTerm) &&
+      !item.grapes?.includes(searchTerm)
     )
       return false;
     return true;
@@ -36,16 +36,16 @@ export default function WineTable() {
   }
 
   return (
-    <div className="wine-table">
-      <div className="wt-controls">
+    <div className="summary-table">
+      <div className="st-controls">
         <input
-          className="wt-search"
+          className="st-search"
           type="text"
           placeholder="חיפוש..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <div className="wt-filters">
+        <div className="st-filters">
           {[
             { key: "all", label: "הכל" },
             { key: "red", label: "אדום" },
@@ -71,69 +71,69 @@ export default function WineTable() {
         </div>
       </div>
 
-      <div className="wt-grid">
-        {filtered.map((wine) => (
+      <div className="st-grid">
+        {filteredItems.map((item) => (
           <div
-            key={wine.id}
-            className={`wt-card wt-card-${wine.type} ${expandedId === wine.id ? "expanded" : ""}`}
+            key={item.id}
+            className={`st-card st-card-${item.type} ${expandedId === item.id ? "expanded" : ""}`}
             onClick={() =>
-              setExpandedId(expandedId === wine.id ? null : wine.id)
+              setExpandedId(expandedId === item.id ? null : item.id)
             }
           >
-            <div className="wt-card-header">
-              <span className="wt-type">{typeLabels[wine.type]}</span>
-              <h3>{wine.name}</h3>
-              <span className="wt-name-en">{wine.nameEn}</span>
+            <div className="st-card-header">
+              <span className="st-type">{typeLabels[item.type]}</span>
+              <h3>{item.name}</h3>
+              <span className="st-name-en">{item.nameEn}</span>
             </div>
-            {wine.type === "term"
+            {item.type === "term"
               ? (
-                <div className="wt-card-body">
-                  <div className="wt-pitch">
-                    <p>{wine.description}</p>
+                <div className="st-card-body">
+                  <div className="st-pitch">
+                    <p>{item.description}</p>
                   </div>
                 </div>
               )
               : (
-                <div className="wt-card-body">
-                  <div className="wt-info-grid">
-                    <div className="wt-info">
-                      <span className="wt-label">מוצא</span>
-                      <span>{wine.origin}</span>
+                <div className="st-card-body">
+                  <div className="st-info-grid">
+                    <div className="st-info">
+                      <span className="st-label">מוצא</span>
+                      <span>{item.origin}</span>
                     </div>
-                    <div className="wt-info">
-                      <span className="wt-label">זנים</span>
-                      <span>{wine.grapes}</span>
+                    <div className="st-info">
+                      <span className="st-label">זנים</span>
+                      <span>{item.grapes}</span>
                     </div>
-                    <div className="wt-info">
-                      <span className="wt-label">סגנון</span>
-                      <span>{wine.style}</span>
+                    <div className="st-info">
+                      <span className="st-label">סגנון</span>
+                      <span>{item.style}</span>
                     </div>
-                    <div className="wt-info">
-                      <span className="wt-label">גוף</span>
-                      <span>{wine.body}</span>
+                    <div className="st-info">
+                      <span className="st-label">גוף</span>
+                      <span>{item.body}</span>
                     </div>
                   </div>
-                  {(expandedId === wine.id || expandedId === -1) && (
-                    <div className="wt-expanded">
-                      <div className="wt-aromas">
-                        <span className="wt-label">ארומות:</span>
-                        <div className="wt-aroma-tags">
-                          {wine.aromas.map((a, i) => (
-                            <span key={i} className="wt-aroma-tag">
+                  {(expandedId === item.id || expandedId === -1) && (
+                    <div className="st-expanded">
+                      <div className="st-aromas">
+                        <span className="st-label">ארומות:</span>
+                        <div className="st-aroma-tags">
+                          {item.aromas.map((a, i) => (
+                            <span key={i} className="st-aroma-tag">
                               {a}
                             </span>
                           ))}
                         </div>
                       </div>
-                      {wine.specialNote && (
-                        <div className="wt-special">
-                          <span className="wt-label">הערה מיוחדת:</span>
-                          <span>{wine.specialNote}</span>
+                      {item.specialNote && (
+                        <div className="st-special">
+                          <span className="st-label">הערה מיוחדת:</span>
+                          <span>{item.specialNote}</span>
                         </div>
                       )}
-                      <div className="wt-pitch">
-                        <span className="wt-label">משפט מכירה:</span>
-                        <p>{wine.salesPitch}</p>
+                      <div className="st-pitch">
+                        <span className="st-label">משפט מכירה:</span>
+                        <p>{item.salesPitch}</p>
                       </div>
                     </div>
                   )}

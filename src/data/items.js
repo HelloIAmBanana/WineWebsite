@@ -1,4 +1,4 @@
-const wines = [
+const items = [
   {
     id: 1,
     name: "נונו אדום",
@@ -204,4 +204,4 @@ const wines = [
   }
 ];
 
-export default wines;
+export default items;

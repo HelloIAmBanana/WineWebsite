@@ -1,6 +1,6 @@
 import { useState } from "react";
 import FlashCards from "./components/FlashCards";
-import WineTable from "./components/WineTable";
+import SummaryTable from "./components/WineTable";
 import "./App.css";
 
 const tabs = [
@@ -36,7 +36,7 @@ export default function App() {
 
       <main className="app-main">
         {activeTab === "flashcards" && <FlashCards />}
-        {activeTab === "table" && <WineTable />}
+        {activeTab === "table" && <SummaryTable />}
       </main>
 
       <footer className="app-footer">
