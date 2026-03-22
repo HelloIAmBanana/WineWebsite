@@ -28,7 +28,7 @@
 }
 
 body {
-  font-family: "Playpen", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Playpen Sans Hebrew", Tahoma, Geneva, Verdana, sans-serif;
   background: var(--wine-dark);
   color: var(--wine-text);
   min-height: 100vh;
