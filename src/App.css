@@ -9,8 +9,9 @@
   --wine-gold: #d4af37;
   --wine-gold-dim: #a88b2a;
   --wine-rose: #db7093;
+  --wine-term: #2196f3;
   --wine-text: #f0e6eb;
-  --wine-text-dim: #a89098;
+  --wine-text-dim: #fff;
   --wine-border: #3d2333;
   --wine-success: #4caf50;
   --wine-error: #ef5350;
@@ -47,6 +48,23 @@ body {
     background: #555;
 }
 
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 /* ========== APP LAYOUT ========== */
 .app {
   min-height: 100vh;
@@ -842,6 +860,10 @@ body {
 
 .wt-card-rose {
   border-right: 4px solid var(--wine-rose);
+}
+
+.wt-card-term {
+  border-right: 4px solid var(--wine-term);
 }
 
 .wt-card-header {

@@ -160,7 +160,6 @@ export default function FlashCards() {
               ? (
                 <div className="fc-details">
                   <div className="fc-sales-pitch">
-                    {/* <span className="fc-label">משפט מכירה:</span> */}
                     <p>{wine.description}</p>
                   </div>
                 </div>

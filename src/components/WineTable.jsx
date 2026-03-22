@@ -6,6 +6,7 @@ const typeLabels = {
   white: "🥂 לבן",
   sparkling: "✨ מבעבע",
   rose: "🌹 רוזה",
+  term: "🧠 מושג"
 };
 
 export default function WineTable() {
@@ -51,6 +52,7 @@ export default function WineTable() {
             { key: "white", label: "לבן" },
             { key: "sparkling", label: "מבעבע" },
             { key: "rose", label: "רוזה" },
+            { key: "term", label: "מושג" },
           ].map((f) => (
             <button
               key={f.key}
@@ -83,50 +85,62 @@ export default function WineTable() {
               <h3>{wine.name}</h3>
               <span className="wt-name-en">{wine.nameEn}</span>
             </div>
-            <div className="wt-card-body">
-              <div className="wt-info-grid">
-                <div className="wt-info">
-                  <span className="wt-label">מוצא</span>
-                  <span>{wine.origin}</span>
+            {wine.type === "term"
+              ? (
+                <div className="wt-card-body">
+                  (expandedId === wine.id || expandedId === -1) && (
+                  <div className="wt-pitch">
+                    <p>{wine.description}</p>
+                  </div>
+                  )
                 </div>
-                <div className="wt-info">
-                  <span className="wt-label">זנים</span>
-                  <span>{wine.grapes}</span>
-                </div>
-                <div className="wt-info">
-                  <span className="wt-label">סגנון</span>
-                  <span>{wine.style}</span>
-                </div>
-                <div className="wt-info">
-                  <span className="wt-label">גוף</span>
-                  <span>{wine.body}</span>
-                </div>
-              </div>
-              {(expandedId === wine.id || expandedId === -1) && (
-                <div className="wt-expanded">
-                  <div className="wt-aromas">
-                    <span className="wt-label">ארומות:</span>
-                    <div className="wt-aroma-tags">
-                      {wine.aromas.map((a, i) => (
-                        <span key={i} className="wt-aroma-tag">
-                          {a}
-                        </span>
-                      ))}
+              )
+              : (
+                <div className="wt-card-body">
+                  <div className="wt-info-grid">
+                    <div className="wt-info">
+                      <span className="wt-label">מוצא</span>
+                      <span>{wine.origin}</span>
+                    </div>
+                    <div className="wt-info">
+                      <span className="wt-label">זנים</span>
+                      <span>{wine.grapes}</span>
+                    </div>
+                    <div className="wt-info">
+                      <span className="wt-label">סגנון</span>
+                      <span>{wine.style}</span>
+                    </div>
+                    <div className="wt-info">
+                      <span className="wt-label">גוף</span>
+                      <span>{wine.body}</span>
                     </div>
                   </div>
-                  {wine.specialNote && (
-                    <div className="wt-special">
-                      <span className="wt-label">הערה מיוחדת:</span>
-                      <span>{wine.specialNote}</span>
+                  {(expandedId === wine.id || expandedId === -1) && (
+                    <div className="wt-expanded">
+                      <div className="wt-aromas">
+                        <span className="wt-label">ארומות:</span>
+                        <div className="wt-aroma-tags">
+                          {wine.aromas.map((a, i) => (
+                            <span key={i} className="wt-aroma-tag">
+                              {a}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      {wine.specialNote && (
+                        <div className="wt-special">
+                          <span className="wt-label">הערה מיוחדת:</span>
+                          <span>{wine.specialNote}</span>
+                        </div>
+                      )}
+                      <div className="wt-pitch">
+                        <span className="wt-label">משפט מכירה:</span>
+                        <p>{wine.salesPitch}</p>
+                      </div>
                     </div>
                   )}
-                  <div className="wt-pitch">
-                    <span className="wt-label">משפט מכירה:</span>
-                    <p>{wine.salesPitch}</p>
-                  </div>
                 </div>
               )}
-            </div>
           </div>
         ))}
       </div>
