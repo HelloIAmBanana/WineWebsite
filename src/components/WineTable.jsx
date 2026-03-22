@@ -88,11 +88,11 @@ export default function WineTable() {
             {wine.type === "term"
               ? (
                 <div className="wt-card-body">
-                  (expandedId === wine.id || expandedId === -1) && (
-                  <div className="wt-pitch">
-                    <p>{wine.description}</p>
-                  </div>
-                  )
+                  {(expandedId === wine.id || expandedId === -1) && (
+                    <div className="wt-pitch">
+                      <p>{wine.description}</p>
+                    </div>
+                  )}
                 </div>
               )
               : (
