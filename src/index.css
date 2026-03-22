@@ -1,4 +1,3 @@
-/* Reset default Vite styles - our App.css handles everything */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,4 +6,17 @@
 
 #root {
   min-height: 100vh;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

@@ -98,7 +98,7 @@ body {
 .nav-tab:hover {
   background: var(--wine-card-hover);
   color: var(--wine-text);
-  border-color: var(--wine-gold-dim);
+  border-color: var(-wine-red-light);
 }
 
 .nav-tab.active {
@@ -243,7 +243,8 @@ body {
   backface-visibility: hidden;
   border-radius: var(--radius);
   border: 2px solid;
-  padding: 2rem;
+  padding: 1.5rem;
+  padding-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
@@ -360,8 +361,13 @@ body {
 
 .btn-shuffle {
   border-color: var(--wine-gold-dim);
-  background: var(--wine-gold-dim);
+  background: var(--wine-gold);
   color: #fff;
+}
+
+.btn-shuffle:hover {
+  background: var(--wine-gold-dim);
+  border-color: var(--wine-gold-dim);
 }
 
 .fc-empty {
