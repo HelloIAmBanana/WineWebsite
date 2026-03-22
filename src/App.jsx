@@ -21,8 +21,8 @@ export default function App() {
         <div className="header-content">
           <h1>
             <span className="header-icon">🍷</span>
-            Wine Exam
-            <span className="header-subtitle">לימוד יינות למבחן</span>
+            מבחן יין לנונו
+            {/* <span className="header-subtitle">לימוד יינות למבחן</span> */}
           </h1>
         </div>
       </header>
@@ -47,9 +47,9 @@ export default function App() {
         {activeTab === "table" && <WineTable />}
       </main>
 
-      <footer className="app-footer">
+      {/* <footer className="app-footer">
         <p>בהצלחה במבחן! 🍷</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }
