@@ -7,8 +7,8 @@ import "./App.css";
 
 const tabs = [
   { id: "flashcards", label: "כרטיסיות", icon: "🃏" },
-  { id: "quiz", label: "מבחן", icon: "📝" },
-  { id: "match", label: "התאמה", icon: "🔗" },
+  // { id: "quiz", label: "מבחן", icon: "📝" },
+  // { id: "match", label: "התאמה", icon: "🔗" },
   { id: "table", label: "סקירה", icon: "📋" },
 ];
 
@@ -21,7 +21,7 @@ export default function App() {
         <div className="header-content">
           <h1>
             <span className="header-icon">🍷</span>
-            Wine Study
+            Wine Exam
             <span className="header-subtitle">לימוד יינות למבחן</span>
           </h1>
         </div>
@@ -42,8 +42,8 @@ export default function App() {
 
       <main className="app-main">
         {activeTab === "flashcards" && <FlashCards />}
-        {activeTab === "quiz" && <Quiz />}
-        {activeTab === "match" && <MatchGame />}
+        {/* {activeTab === "quiz" && <Quiz />}
+        {activeTab === "match" && <MatchGame />} */}
         {activeTab === "table" && <WineTable />}
       </main>
 
