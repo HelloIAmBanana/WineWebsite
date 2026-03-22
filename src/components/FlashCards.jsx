@@ -4,9 +4,9 @@ import wines from "../data/wines";
 const typeColors = {
   red: { bg: "rgba(139, 30, 63, 0.15)", border: "#8b1e3f", accent: "#c2185b" },
   white: {
-    bg: "rgba(212, 175, 55, 0.12)",
-    border: "#d4af37",
-    accent: "#c8a82e",
+    bg: "rgba(226, 214, 174, 0.12)",
+    border: "#ffffff",
+    accent: "#f1e9c6",
   },
   sparkling: {
     bg: "rgba(212, 175, 55, 0.12)",
