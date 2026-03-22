@@ -52,6 +52,12 @@ export default function WineTable() {
               {f.label}
             </button>
           ))}
+          <button
+              className={`btn btn-filter`}
+              onClick={() => setExpandedId(-1)}
+            >
+              ⛶
+            </button>
         </div>
       </div>
 
@@ -88,7 +94,7 @@ export default function WineTable() {
                   <span>{wine.body}</span>
                 </div>
               </div>
-              {expandedId === wine.id && (
+              {(expandedId === wine.id || expandedId === -1) && (
                 <div className="wt-expanded">
                   <div className="wt-aromas">
                     <span className="wt-label">ארומות:</span>
