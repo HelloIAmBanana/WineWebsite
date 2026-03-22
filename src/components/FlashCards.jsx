@@ -36,7 +36,7 @@ export default function FlashCards() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [filter, setFilter] = useState("all");
   const [knownCards, setKnownCards] = useState(localStorage.getItem("knownCards") ? new Set(JSON.parse(localStorage.getItem("knownCards"))) : new Set());
-  const [showKnown, setShowKnown] = useState(true);
+  const [showKnown, setShowKnown] = useState(localStorage.getItem("showKnown") === "true");
 
   const filteredWines = useMemo(() => wines.filter((w) => {
     if (filter !== "all" && w.type !== filter) return false;
@@ -99,7 +99,7 @@ export default function FlashCards() {
           showKnown={showKnown}
         />
         <div className="fc-empty">
-          <p>כל הכבוד! כל הכרטיסים ידועים" 🎉</p>
+          <p>כל הכבוד! כל הכרטיסים ידועים 🎉</p>
           <button className="btn" onClick={() => setShowKnown(true)}>
             הצג הכל
           </button>
@@ -201,7 +201,7 @@ export default function FlashCards() {
           {knownCards.has(wine.id) ? "✓ ידוע" : "✗ לא ידוע"}
         </button>
         <button className="btn btn-shuffle" onClick={shuffle}>
-          רנדומלי
+          רנדומלי 🎲
         </button>
         <button className="btn btn-nav" onClick={goNext}>
           הבא ←
@@ -238,6 +238,7 @@ function Filters({ filter, setFilter, showKnown, setShowKnown, setCurrentIndex }
           checked={showKnown}
           onChange={(e) => {
             setShowKnown(e.target.checked);
+            localStorage.setItem("showKnown", `${e.target.checked}`);
             setCurrentIndex(0);
           }}
         />

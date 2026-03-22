@@ -345,29 +345,31 @@ body {
 }
 
 .btn-know {
-  border-color: var(--wine-success);
-  color: var(--wine-success);
+  color: #fff;
 }
 
 .btn-know.known {
-  background: var(--wine-success);
-  color: #fff;
+  background: var(--wine-success);  
+  border-color: var(--wine-success);
 }
 
 .btn-know.unknown {
   background: var(--wine-error);
-  color: #fff;
+  border-color: var(--wine-error);
 }
 
 .btn-shuffle {
   border-color: var(--wine-gold-dim);
-  color: var(--wine-gold);
+  background: var(--wine-gold-dim);
+  color: #fff;
 }
 
 .fc-empty {
   text-align: center;
   padding: 3rem;
   color: var(--wine-text-dim);
+  display: flex;
+  gap: 8px;
 }
 
 .fc-empty p {

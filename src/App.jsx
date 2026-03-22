@@ -5,7 +5,7 @@ import "./App.css";
 
 const tabs = [
   { id: "flashcards", label: "כרטיסיות", icon: "🃏" },
-  { id: "table", label: "סקירה", icon: "📋" },
+  { id: "table", label: "סיכום", icon: "📋" },
 ];
 
 export default function App() {
@@ -16,7 +16,6 @@ export default function App() {
       <header className="app-header">
         <div className="header-content">
           <h1>
-            <span className="header-icon">🍷</span>
             מבחן יין לנונו
           </h1>
         </div>
@@ -40,9 +39,9 @@ export default function App() {
         {activeTab === "table" && <WineTable />}
       </main>
 
-      {/* <footer className="app-footer">
-        <p>בהצלחה במבחן! 🍷</p>
-      </footer> */}
+      <footer className="app-footer">
+        <p>נוצר מתוך שעמום על ידי אושרי דגן ♥</p>
+      </footer>
     </div>
   );
 }

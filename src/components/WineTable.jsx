@@ -80,7 +80,7 @@ export default function WineTable() {
           >
             <div className="wt-card-header">
               <span className="wt-type">{typeLabels[wine.type]}</span>
-              <h3>{wine.name}</h3>
+              <h3>{wine.name}<span className="wt-name-en">{wine.nameEn}</span></h3>
               <span className="wt-name-en">{wine.nameEn}</span>
             </div>
             <div className="wt-card-body">
