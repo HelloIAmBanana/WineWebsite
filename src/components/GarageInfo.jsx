@@ -1,15 +1,9 @@
 export default function GarageInfo() {
   return (
     <div className="garage">
-      <div className="gr-card-wrapper" >
+      <div className="gr-card-wrapper">
         <div className="gr-card">
-          <div
-            className="gr-face"
-            style={{
-              background: "rgba(219, 112, 147, 0.15)",
-              borderColor: "#db7093",
-            }}
-          >
+          <div className="gr-face">
             <h3>גראז' דה פאפא</h3>
             <div className="gr-details">
               <div className="gr-info">
@@ -23,6 +17,6 @@ export default function GarageInfo() {
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

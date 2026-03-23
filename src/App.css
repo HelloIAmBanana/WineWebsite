@@ -74,7 +74,6 @@ body::-webkit-scrollbar-thumb:hover {
 
 .app-header {
   background: var(--wine-bg);
-  /* border-bottom: 1px solid var(--wine-border); */
   padding: 1.5rem 2rem;
   text-align: center;
 }
@@ -427,43 +426,34 @@ body::-webkit-scrollbar-thumb:hover {
 .gr-card-wrapper {
   perspective: 1200px;
   width: 100%;
-  min-height: 350px;
+  min-height: 550px;
 }
 
 .gr-card {
-  position: relative;
   width: 100%;
-  min-height: 350px;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-style: preserve-3d;
+  display: contents;
 }
 
 .gr-face {
   position: absolute;
   inset: 0;
-  backface-visibility: hidden;
   border-radius: var(--radius);
   border: 2px solid;
   padding: 1.5rem;
   padding-bottom: 0.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow);
   overflow-y: auto;
   align-items: center;
+  background: rgba(219, 112, 147, 0.15);
+  border-color: #db7093;
 }
+
 .gr-face h3 {
   font-size: 1.7rem;
   color: var(--wine-gold);
   margin-bottom: 1rem;
   margin-top: 0.5rem;
-}
-
-.gr-front {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-color: gray;
 }
 
 .gr-details {
@@ -475,7 +465,6 @@ body::-webkit-scrollbar-thumb:hover {
 .gr-info {
   margin-top: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid var(--wine-border);
   display: flex;
   flex-direction: column;
   gap: 16px;

@@ -4,8 +4,8 @@ import "./App.css";
 
 const tabs = [
   { id: "flashcards", label: "כרטיסיות", icon: "🃏" },
-  { id: "table", label: "סיכום", icon: "📋" },
   { id: "garage", label: "גראז' דה פאפא", icon: "🍷" },
+  { id: "table", label: "סיכום", icon: "📋" },
 ];
 
 export default function App() {
