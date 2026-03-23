@@ -432,9 +432,6 @@ body::-webkit-scrollbar-thumb:hover {
 .gr-card {
   width: 100%;
   display: contents;
-}
-
-.gr-face {
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
@@ -449,9 +446,9 @@ body::-webkit-scrollbar-thumb:hover {
   border-color: #db7093;
 }
 
-.gr-face h3 {
+.gr-card h3 {
   font-size: 1.7rem;
-  color: var(--wine-gold);
+  color: var(--wine-red-light);
   margin-bottom: 1rem;
   margin-top: 0.5rem;
 }
@@ -475,7 +472,7 @@ body::-webkit-scrollbar-thumb:hover {
   font-size: 1.2rem;
   margin-top: 0.3rem;
   line-height: 1.6;
-  color: var(--wine-text-dim);
+  color: var(--wine-rose);
 }
 
 /* ========== QUIZ ========== */
