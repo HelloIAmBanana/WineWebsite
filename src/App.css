@@ -1,4 +1,5 @@
 /* ========== BASE & THEME ========== */
+
 :root {
   --wine-dark: #1a0a14;
   --wine-bg: #1e0e18;
@@ -35,37 +36,8 @@ body {
   direction: rtl;
 }
 
-/* ::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
-body::-webkit-scrollbar {
-  width: 8px;
-}
-
-body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-body::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-
-}
-
-body::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */
 /* ========== APP LAYOUT ========== */
+
 .app {
   min-height: 100vh;
   display: flex;
@@ -100,6 +72,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== NAVIGATION ========== */
+
 .app-nav {
   display: flex;
   justify-content: center;
@@ -143,6 +116,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== MAIN ========== */
+
 .app-main {
   flex: 1;
   max-width: 1100px;
@@ -152,6 +126,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== FOOTER ========== */
+
 .app-footer {
   text-align: center;
   padding: 1.5rem;
@@ -161,6 +136,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== BUTTONS ========== */
+
 .btn {
   background: var(--wine-card);
   border: 1px solid var(--wine-border);
@@ -200,6 +176,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== FLASHCARDS ========== */
+
 .flashcards {
   display: flex;
   flex-direction: column;
@@ -421,9 +398,6 @@ body::-webkit-scrollbar-thumb:hover {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-}
-
-.gr-card-wrapper {
   perspective: 1200px;
   width: 100%;
   min-height: 550px;
@@ -453,12 +427,6 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 0.5rem;
 }
 
-.gr-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
 .gr-info {
   margin-top: 0.5rem;
   padding-top: 0.5rem;
@@ -476,6 +444,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== QUIZ ========== */
+
 .quiz {
   max-width: 650px;
   margin: 0 auto;
@@ -691,6 +660,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== MATCH GAME ========== */
+
 .match-game {
   max-width: 700px;
   margin: 0 auto;
@@ -845,6 +815,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== SUMMARY TABLE ========== */
+
 .summary-table {
   display: flex;
   flex-direction: column;
@@ -1035,6 +1006,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 /* ========== RESPONSIVE ========== */
+
 @media (max-width: 600px) {
   .header-content h1 {
     font-size: 1.4rem;
