@@ -931,7 +931,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .st-type {
-  font-size: 0.8rem;
+  font-size: 1rem;
   color: var(--wine-text-dim);
 }
 
