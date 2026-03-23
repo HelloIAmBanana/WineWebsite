@@ -60,17 +60,6 @@ body {
   gap: 0.5rem;
 }
 
-.header-icon {
-  font-size: 2.2rem;
-}
-
-.header-subtitle {
-  font-size: 0.9rem;
-  color: var(--wine-text-dim);
-  font-weight: 400;
-  margin-right: 0.75rem;
-}
-
 /* ========== NAVIGATION ========== */
 
 .app-nav {
@@ -125,8 +114,6 @@ body {
   padding: 2rem 1.5rem;
 }
 
-/* ========== FOOTER ========== */
-
 .app-footer {
   text-align: center;
   padding: 1.5rem;
@@ -160,21 +147,6 @@ body {
   color: #fff;
 }
 
-.btn-start {
-  background: linear-gradient(135deg, var(--wine-red), #6b1530);
-  border-color: var(--wine-red-light);
-  color: #fff;
-  font-size: 1.1rem;
-  padding: 0.8rem 2rem;
-  margin-top: 1rem;
-}
-
-.btn-start:hover {
-  background: linear-gradient(135deg, var(--wine-red-light), var(--wine-red));
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(139, 30, 63, 0.4);
-}
-
 /* ========== FLASHCARDS ========== */
 
 .flashcards {
@@ -187,7 +159,7 @@ body {
 .fc-filters {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   justify-content: center;
 }
@@ -239,6 +211,7 @@ body {
   min-height: 350px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
+  box-shadow: var(--shadow);
 }
 
 .fc-card.flipped {
@@ -262,12 +235,22 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-color: gray;
+  border-color: var(--wine-bg);
+  background-image: url('./assets/QuestionMark.jpg');
+  background-blend-mode: color-burn;
+  background-color: var(--wine-bg);
 }
 
 .fc-back {
   transform: rotateY(180deg);
   overflow-y: auto;
+}
+
+.fc-back h3 {
+  font-size: 1.3rem;
+  color: var(--wine-gold);
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
 }
 
 .fc-type-badge {
@@ -281,34 +264,15 @@ body {
   font-weight: 600;
 }
 
-.fc-emoji {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
 .fc-item-name {
-  font-size: 1.8rem;
-  color: var(--wine-gold);
+  font-size: 2.5rem;
+  color: var(--wine-gold-dim);
   margin-bottom: 0.5rem;
 }
 
 .fc-item-name-en {
-  color: var(--wine-text-dim);
-  font-size: 1rem;
-}
-
-.fc-hint {
-  margin-top: 1.5rem;
-  color: var(--wine-text-dim);
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-.fc-back h3 {
-  font-size: 1.3rem;
-  color: var(--wine-gold);
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
+  color: var(--wine-gold-dim);
+  font-size: 2rem;
 }
 
 .fc-details {
@@ -443,377 +407,6 @@ body {
   color: var(--wine-rose);
 }
 
-/* ========== QUIZ ========== */
-
-.quiz {
-  max-width: 650px;
-  margin: 0 auto;
-}
-
-.quiz-setup {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: var(--wine-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--wine-border);
-}
-
-.quiz-setup h2 {
-  font-size: 1.8rem;
-  color: var(--wine-gold);
-  margin-bottom: 0.5rem;
-}
-
-.quiz-setup p {
-  color: var(--wine-text-dim);
-  margin-bottom: 1.5rem;
-}
-
-.quiz-num-btns {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.quiz-header {
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.quiz-progress-bar {
-  height: 6px;
-  background: var(--wine-card);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 0.75rem;
-  width: 100%;
-}
-
-.quiz-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--wine-red), var(--wine-gold));
-  border-radius: 3px;
-  transition: width 0.5s ease;
-}
-
-.quiz-counter,
-.quiz-score {
-  color: var(--wine-text-dim);
-  font-size: 0.9rem;
-}
-
-.quiz-question {
-  background: var(--wine-card);
-  border: 1px solid var(--wine-border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.quiz-question h3 {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: var(--wine-text);
-}
-
-.quiz-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.quiz-option {
-  background: var(--wine-card);
-  border: 2px solid var(--wine-border);
-  border-radius: var(--radius-sm);
-  padding: 1rem 1.2rem;
-  color: var(--wine-text);
-  cursor: pointer;
-  transition: var(--transition);
-  text-align: right;
-  font-size: 1rem;
-  font-family: inherit;
-}
-
-.quiz-option:hover:not(.correct):not(.wrong) {
-  background: var(--wine-card-hover);
-  border-color: var(--wine-gold-dim);
-}
-
-.quiz-option.correct {
-  background: rgba(76, 175, 80, 0.15);
-  border-color: var(--wine-success);
-  color: var(--wine-success);
-}
-
-.quiz-option.wrong {
-  background: rgba(239, 83, 80, 0.15);
-  border-color: var(--wine-error);
-  color: var(--wine-error);
-}
-
-.quiz-feedback {
-  text-align: center;
-  padding: 1rem;
-}
-
-.quiz-feedback p.correct {
-  color: var(--wine-success);
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-}
-
-.quiz-feedback p.wrong {
-  color: var(--wine-error);
-  font-size: 1.1rem;
-  margin-bottom: 0.75rem;
-}
-
-.btn-next {
-  background: var(--wine-red);
-  border-color: var(--wine-red-light);
-  color: #fff;
-  padding: 0.7rem 1.5rem;
-}
-
-.btn-next:hover {
-  background: var(--wine-red-light);
-}
-
-/* Quiz Results */
-.quiz-results {
-  text-align: center;
-}
-
-.quiz-results-header {
-  background: var(--wine-card);
-  border: 1px solid var(--wine-border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.quiz-emoji {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.quiz-results-header h2 {
-  font-size: 2rem;
-  color: var(--wine-gold);
-}
-
-.quiz-percentage {
-  font-size: 1.5rem;
-  color: var(--wine-text-dim);
-  margin: 0.5rem 0;
-}
-
-.quiz-results-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  text-align: right;
-}
-
-.quiz-result-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-  background: var(--wine-card);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--wine-border);
-}
-
-.quiz-result-icon {
-  font-size: 1.2rem;
-  font-weight: bold;
-  flex-shrink: 0;
-}
-
-.quiz-result-item.correct .quiz-result-icon {
-  color: var(--wine-success);
-}
-
-.quiz-result-item.wrong .quiz-result-icon {
-  color: var(--wine-error);
-}
-
-.quiz-result-text p {
-  font-size: 0.85rem;
-  color: var(--wine-text-dim);
-  margin-top: 0.2rem;
-}
-
-.quiz-correct-answer {
-  color: var(--wine-success) !important;
-  font-weight: 600;
-}
-
-/* ========== MATCH GAME ========== */
-
-.match-game {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.match-setup {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: var(--wine-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--wine-border);
-}
-
-.match-setup h2 {
-  font-size: 1.8rem;
-  color: var(--wine-gold);
-  margin-bottom: 0.5rem;
-}
-
-.match-setup p {
-  color: var(--wine-text-dim);
-  margin-bottom: 1.5rem;
-}
-
-.match-modes {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.btn-mode {
-  font-size: 1.05rem;
-  padding: 0.8rem 1.5rem;
-  border-color: var(--wine-gold-dim);
-  color: var(--wine-gold);
-}
-
-.btn-mode:hover {
-  background: rgba(212, 175, 55, 0.1);
-}
-
-.match-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.match-moves,
-.match-progress {
-  color: var(--wine-text-dim);
-  font-size: 0.95rem;
-}
-
-.match-board {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.match-column {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.match-column h4 {
-  text-align: center;
-  color: var(--wine-gold-dim);
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.match-item {
-  background: var(--wine-card);
-  border: 2px solid var(--wine-border);
-  border-radius: var(--radius-sm);
-  padding: 0.8rem 1rem;
-  color: var(--wine-text);
-  cursor: pointer;
-  transition: var(--transition);
-  font-size: 0.95rem;
-  font-family: inherit;
-  text-align: center;
-}
-
-.match-item:hover:not(.matched) {
-  background: var(--wine-card-hover);
-  border-color: var(--wine-gold-dim);
-}
-
-.match-item.selected {
-  border-color: var(--wine-gold);
-  background: rgba(212, 175, 55, 0.1);
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-}
-
-.match-item.matched {
-  background: rgba(76, 175, 80, 0.12);
-  border-color: var(--wine-success);
-  color: var(--wine-success);
-  cursor: default;
-  opacity: 0.7;
-}
-
-.match-item.wrong {
-  border-color: var(--wine-error);
-  background: rgba(239, 83, 80, 0.12);
-  animation: shake 0.4s ease;
-}
-
-@keyframes shake {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  75% {
-    transform: translateX(5px);
-  }
-}
-
-.match-done {
-  text-align: center;
-  padding: 3rem;
-  background: var(--wine-card);
-  border-radius: var(--radius);
-  border: 1px solid var(--wine-border);
-}
-
-.match-done h2 {
-  font-size: 2rem;
-  color: var(--wine-gold);
-  margin-bottom: 0.5rem;
-}
-
-.match-done p {
-  color: var(--wine-text-dim);
-  margin-bottom: 1rem;
-}
-
-.match-done .btn {
-  margin-top: 0.5rem;
-}
-
 /* ========== SUMMARY TABLE ========== */
 
 .summary-table {
@@ -901,15 +494,15 @@ body {
   padding: 1rem 1.2rem 0.5rem;
 }
 
-.st-type {
-  font-size: 1rem;
-  color: var(--wine-text-dim);
-}
-
 .st-card-header h3 {
   font-size: 1.2rem;
   color: var(--wine-gold);
   margin: 0.3rem 0;
+}
+
+.st-type {
+  font-size: 1rem;
+  color: var(--wine-text-dim);
 }
 
 .st-name-en {

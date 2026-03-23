@@ -11,11 +11,11 @@ const typeLabels = {
 
 export default function SummaryTable() {
   const [expandedId, setExpandedId] = useState(null);
-  const [filter, setFilter] = useState("all");
+  const [activeFilter, setActiveFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredItems = items.filter((item) => {
-    if (filter !== "all" && item.type !== filter) return false;
+    if (activeFilter !== "all" && item.type !== activeFilter) return false;
     if (
       searchTerm &&
       !item.name.includes(searchTerm) &&
@@ -53,13 +53,13 @@ export default function SummaryTable() {
             { key: "sparkling", label: "מבעבע" },
             { key: "rose", label: "רוזה" },
             { key: "term", label: "מושג" },
-          ].map((f) => (
+          ].map((filter) => (
             <button
-              key={f.key}
-              className={`btn btn-filter ${filter === f.key ? "active" : ""}`}
-              onClick={() => setFilter(f.key)}
+              key={filter.key}
+              className={`btn btn-filter ${activeFilter === filter.key ? "active" : ""}`}
+              onClick={() => setActiveFilter(filter.key)}
             >
-              {f.label}
+              {filter.label}
             </button>
           ))}
           <button

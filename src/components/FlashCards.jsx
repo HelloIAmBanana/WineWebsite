@@ -44,13 +44,15 @@ export default function FlashCards() {
   const [knownCards, setKnownCards] = useState(localStorage.getItem("knownCards") ? new Set(JSON.parse(localStorage.getItem("knownCards"))) : new Set());
   const [showKnown, setShowKnown] = useState(true);
   const [wineOnly, setWineOnly] = useState(false);
+  const [termsOnly, setTermsOnly] = useState(false);
 
   const filteredItems = useMemo(() => items.filter((item) => {
+    if (termsOnly && item.type !== "term") return false;
     if (wineOnly && item.type == "term") return false;
     if (filter !== "all" && item.type !== filter) return false;
     if (!showKnown && knownCards.has(item.id)) return false;
     return true;
-  }), [filter, knownCards, showKnown, wineOnly]);
+  }), [filter, knownCards, showKnown, wineOnly, termsOnly]);
 
   const item = filteredItems[currentIndex] || filteredItems[0];
   const colors = item ? typeColors[item.type] : typeColors.red;
@@ -96,6 +98,13 @@ export default function FlashCards() {
     setCurrentIndex(newIndex);
   };
 
+  const showAll = () => {
+    setShowKnown(true);
+    setFilter("all");
+    setWineOnly(false);
+    setTermsOnly(false);
+  };
+
   if (filteredItems.length === 0) {
     return (
       <div className="flashcards">
@@ -107,10 +116,12 @@ export default function FlashCards() {
           showKnown={showKnown}
           wineOnly={wineOnly}
           setWineOnly={setWineOnly}
+          setTermsOnly={setTermsOnly}
+          termsOnly={termsOnly}
         />
         <div className="fc-empty">
-          <p>כל הכבוד! כל הכרטיסים ידועים 🎉</p>
-          <button className="btn" onClick={() => setShowKnown(true)}>
+          <p>כל הכבוד! כל הכרטיסים נגמרו 🎉</p>
+          <button className="btn" onClick={showAll}>
             הצג הכל
           </button>
           <button className="btn" onClick={unknowAll}>
@@ -131,8 +142,9 @@ export default function FlashCards() {
         showKnown={showKnown}
         wineOnly={wineOnly}
         setWineOnly={setWineOnly}
+        setTermsOnly={setTermsOnly}
+        termsOnly={termsOnly}
       />
-
       <div className="fc-progress">
         <span>
           {currentIndex + 1} / {filteredItems.length}
@@ -141,7 +153,6 @@ export default function FlashCards() {
           ידוע: {knownCards.size} / {items.length}
         </span>
       </div>
-
       <div className="fc-card-wrapper" onClick={() => setIsFlipped(!isFlipped)}>
         <div className={`fc-card ${isFlipped ? "flipped" : ""}`}>
           {/* Front - Wine name */}
@@ -239,7 +250,9 @@ function Filters({
   setShowKnown,
   setCurrentIndex,
   wineOnly,
-  setWineOnly
+  setWineOnly,
+  termsOnly,
+  setTermsOnly
 }) {
   const filters = [
     { key: "all", label: "הכל" },
@@ -280,6 +293,17 @@ function Filters({
           checked={wineOnly}
           onChange={(e) => {
             setWineOnly(e.target.checked);
+            setCurrentIndex(0);
+          }}
+        />
+      </label>
+      <label className="fc-toggle">
+        הצג רק מושגים
+        <input
+          type="checkbox"
+          checked={termsOnly}
+          onChange={(e) => {
+            setTermsOnly(e.target.checked);
             setCurrentIndex(0);
           }}
         />
