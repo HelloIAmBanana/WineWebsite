@@ -109,8 +109,8 @@ export default function FlashCards() {
     return (
       <div className="flashcards">
         <Filters
-          filter={filter}
-          setFilter={setFilter}
+          activeFilter={filter}
+          setActiveFilter={setFilter}
           setCurrentIndex={setCurrentIndex}
           setShowKnown={setShowKnown}
           showKnown={showKnown}
@@ -135,8 +135,8 @@ export default function FlashCards() {
   return (
     <div className="flashcards">
       <Filters
-        filter={filter}
-        setFilter={setFilter}
+        activeFilter={filter}
+        setActiveFilter={setFilter}
         setCurrentIndex={setCurrentIndex}
         setShowKnown={setShowKnown}
         showKnown={showKnown}
@@ -244,8 +244,8 @@ export default function FlashCards() {
 }
 
 function Filters({
-  filter,
-  setFilter,
+  activeFilter,
+  setActiveFilter,
   showKnown,
   setShowKnown,
   setCurrentIndex,
@@ -265,13 +265,20 @@ function Filters({
   return (
     <div className="fc-filters">
       <div className="fc-filter-btns">
-        {filters.map((f) => (
+        {filters.map((filter) => (
           <button
-            key={f.key}
-            className={`btn btn-filter ${filter === f.key ? "active" : ""}`}
-            onClick={() => setFilter(f.key)}
+            key={filter.key}
+            className={`btn btn-filter ${activeFilter === filter.key ? "active" : ""}`}
+            onClick={() => {
+              if (filter.key == "term") {
+                setWineOnly(false);
+              } else if (filter.key !== "all" && filter.key !== "term") {
+                setTermsOnly(false);
+              }
+              setActiveFilter(filter.key)
+            }}
           >
-            {f.label}
+            {filter.label}
           </button>
         ))}
       </div>
@@ -292,7 +299,9 @@ function Filters({
           type="checkbox"
           checked={wineOnly}
           onChange={(e) => {
+            setTermsOnly(false);
             setWineOnly(e.target.checked);
+            setActiveFilter("all");
             setCurrentIndex(0);
           }}
         />
@@ -303,7 +312,9 @@ function Filters({
           type="checkbox"
           checked={termsOnly}
           onChange={(e) => {
+            setWineOnly(false);
             setTermsOnly(e.target.checked);
+            setActiveFilter("term");
             setCurrentIndex(0);
           }}
         />
