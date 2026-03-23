@@ -428,7 +428,6 @@ body::-webkit-scrollbar-thumb:hover {
   perspective: 1200px;
   width: 100%;
   min-height: 350px;
-  cursor: pointer;
 }
 
 .gr-card {
@@ -451,9 +450,10 @@ body::-webkit-scrollbar-thumb:hover {
   flex-direction: column;
   box-shadow: var(--shadow);
   overflow-y: auto;
+  align-items: center;
 }
 .gr-face h3 {
-  font-size: 1.3rem;
+  font-size: 1.7rem;
   color: var(--wine-gold);
   margin-bottom: 1rem;
   margin-top: 0.5rem;
@@ -476,9 +476,14 @@ body::-webkit-scrollbar-thumb:hover {
   margin-top: 0.5rem;
   padding-top: 0.5rem;
   border-top: 1px solid var(--wine-border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
 }
 
 .gr-info p {
+  font-size: 1.2rem;
   margin-top: 0.3rem;
   line-height: 1.6;
   color: var(--wine-text-dim);
