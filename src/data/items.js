@@ -29,8 +29,8 @@ const items = [
   },
   {
     id: 3,
-    name: "ואלפוליצ'לה אדום",
-    nameEn: "Valpolicella Red",
+    name: "ואלפוליצ'לה",
+    nameEn: "Valpolicella",
     origin: "ונטו, איטליה",
     style: "אדום יבש",
     type: "red",
@@ -169,8 +169,8 @@ const items = [
   },
   {
     id: 13,
-    name: "רוזה גראז' דה פאפא",
-    nameEn: "Rosé Garage de Papa",
+    name: "גראז' דה פאפא רוזה",
+    nameEn: "Garage de Papa Rosé",
     origin: "הרי יהודה, ישראל",
     style: "רוזה יבש",
     type: "rose",
@@ -243,7 +243,7 @@ const items = [
     nameEn: "",
     type: "term",
     description:
-      "את היין מרכיבים זנים מסוימים אף זן אינו מעל .85%"
+      "את היין מרכיבים זנים מסוימים אך אף זן אינו מעל 85%"
   },
   {
     id: 22,

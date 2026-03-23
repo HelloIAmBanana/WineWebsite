@@ -95,7 +95,10 @@ export default function FlashCards() {
     if (newIndex === currentIndex) {
       return shuffle();
     };
-    setCurrentIndex(newIndex);
+    
+    setTimeout(() => {
+      setCurrentIndex(newIndex);
+    }, 250);
   };
 
   const showAll = () => {
